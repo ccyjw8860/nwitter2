@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import { authService } from "../myBase";
 
 const CreateAccount = () => {
@@ -20,20 +21,25 @@ const CreateAccount = () => {
       email,
       password
     );
+    if (data) {
+      <Redirect to="/" />;
+    }
   };
 
   return (
     <form onSubmit={onSubmit}>
       <input
         type="email"
-        placeHolder="Write your email"
+        name="email"
+        placeholder="Write your email"
         value={email}
         onChange={onChange}
         required
       />
       <input
         type="password"
-        placeHolder="Write your email"
+        name="password"
+        placeholder="Write your password"
         value={password}
         onChange={onChange}
         required

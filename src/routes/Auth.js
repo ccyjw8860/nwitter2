@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { authService } from "../myBase";
 
 const Auth = () => {
@@ -24,12 +24,14 @@ const Auth = () => {
         email,
         password
       );
+      if (data) {
+        return <Redirect to="/" />;
+      }
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -49,13 +51,9 @@ const Auth = () => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Login"} />
+        <input type="submit" value="Login" />
       </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Sign in" : "Create Account"}
-      </span>
       <div>
-        <button>Sign In</button>
         <button>Continue with Google</button>
         <button>Continue with Github</button>
       </div>
