@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Route } from "react-router-dom";
 import { authService, firebaseInstance } from "../myBase";
 
 const Auth = () => {
