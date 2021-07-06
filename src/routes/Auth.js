@@ -24,6 +24,7 @@ const Auth = () => {
         email,
         password
       );
+      console.log(data);
       if (data) {
         return <Redirect to="/" />;
       }
